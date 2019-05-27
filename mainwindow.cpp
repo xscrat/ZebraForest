@@ -2,11 +2,19 @@
 #include "ui_mainwindow.h"
 #include "highlighter.h"
 #include <QProcess>
+#include <QtWebChannel/QWebChannel>
+#include "QtWebSockets/qwebsocketserver.h"
+#include "QtWebSockets/qwebsocket.h"
+#include "QUdpSocket"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MainWindow)
 {
+    pythonProcess = NULL;
+    highlighter = NULL;
+
     ui->setupUi(this);
     textEdit = ui->tabCodeEditor;
     ui->tabGraphicEditor->load(QUrl("file:///C:/Users/Junfeng/Documents/QTBlockly/Blockly/blockly-master/demos/index.html"));
@@ -15,35 +23,22 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonSave, SIGNAL(clicked()), this, SLOT(save()));
     connect(ui->buttonSaveAs, SIGNAL(clicked()), this, SLOT(saveAs()));
     connect(ui->buttonRun, SIGNAL(clicked()), this, SLOT(run()));
+    connect(ui->tabEditor, SIGNAL(currentChanged(int)), this, SLOT(tabSelected()));
     highlighter = new Highlighter(textEdit->document());
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::createActions()
-{
-    newAct = new QAction(tr("&New"), this);
-    newAct->setShortcuts(QKeySequence::New);
-    newAct->setStatusTip(tr("Create a new file"));
-    connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
-
-    openAct = new QAction(tr("&Open"), this);
-    openAct->setShortcuts(QKeySequence::Open);
-    openAct->setStatusTip(tr("Open an existing file"));
-    connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
-
-    saveAct = new QAction(tr("&Save"), this);
-    saveAct->setShortcuts(QKeySequence::Save);
-    saveAct->setStatusTip(tr("Save the document to disk"));
-    connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
-
-    saveAsAct = new QAction(tr("&SaveAs"), this);
-    saveAsAct->setShortcuts(QKeySequence::SaveAs);
-    saveAsAct->setStatusTip(tr("Save the document under a new name"));
-    connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));
+    if (pythonProcess)
+    {
+        delete pythonProcess;
+        pythonProcess = NULL;
+    }
+    if (highlighter)
+    {
+        delete highlighter;
+    }
 }
 
 void MainWindow::newFile()
@@ -163,10 +158,43 @@ bool MainWindow::saveFile(const QString &fileName)
 
 bool MainWindow::run()
 {
-    QProcess *process = new QProcess(this);
+    transferGraphicCodeToEditorCode();
+    if (pythonProcess)
+    {
+        delete pythonProcess;
+        pythonProcess = NULL;
+    }
+    pythonProcess = new QProcess(this);
     QString program = "python.exe";
     QString command = "-c";
-    QString code = "'print(5)'";
-    process->start(program, QStringList() << command << code);
+    pythonProcess->setProcessChannelMode(QProcess::MergedChannels);
+    connect(pythonProcess, SIGNAL(readyRead()), this, SLOT(readCommand()));
+    connect(pythonProcess, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(stopCommand(int, QProcess::ExitStatus)));
+    pythonProcess->start(program, QStringList() << command << ui->tabCodeEditor->toPlainText());
     return true;
+}
+
+void MainWindow::readCommand()
+{
+    ui->codeOutput->append(pythonProcess->readAll());
+}
+
+void MainWindow::stopCommand(int exitCode, QProcess::ExitStatus exitStatus)
+{
+    ui->codeOutput->append(pythonProcess->readAll());
+}
+
+void MainWindow::transferGraphicCodeToEditorCode()
+{
+    QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("showCode();");
+    QString code = tmp.toString();
+    ui->tabCodeEditor->document()->setPlainText(code);
+}
+
+void MainWindow::tabSelected()
+{
+    if (ui->tabEditor->currentIndex() == 1)
+    {
+        transferGraphicCodeToEditorCode();
+    }
 }

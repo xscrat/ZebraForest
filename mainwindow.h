@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QDialog>
+#include <QProcess>
+#include <QtWebSockets/QWebSocket>
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -21,31 +23,33 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+Q_SIGNALS:
+    void closed();
+
 private slots:
     void newFile();
     void open();
     bool save();
     bool saveAs();
     bool run();
+    void readCommand();
+    void stopCommand(int exitCode, QProcess::ExitStatus exitStatus);
+    void tabSelected();
 
 private:
     Ui::MainWindow *ui;
 
-    void createActions();
     bool maybeSave();
     void loadFile(const QString &fileName);
     bool saveFile(const QString &fileName);
     void setCurrentFile(const QString &fileName);
     QString strippedName(const QString &fullFileName);
-
-    QAction *newAct;
-    QAction *openAct;
-    QAction *saveAct;
-    QAction *saveAsAct;
+    void transferGraphicCodeToEditorCode();
 
     CodeEditor *textEdit;
     Highlighter *highlighter;
     QString curFile;
+    QProcess *pythonProcess;
 };
 
 #endif // MAINWINDOW_H
