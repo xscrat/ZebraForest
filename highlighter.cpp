@@ -8,16 +8,17 @@ Highlighter::Highlighter(QTextDocument *parent)
     keywordFormat.setForeground(Qt::darkBlue);
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
-    keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b"
-                    << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b"
-                    << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b"
-                    << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b"
-                    << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b"
-                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b"
-                    << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b"
-                    << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b"
-                    << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b"
-                    << "\\bvoid\\b" << "\\bvolatile\\b";
+    keywordPatterns << "\\bFalse\\b" << "\\bNone\\b" << "\\bTrue\\b"
+                    << "\\band\\b" << "\\bas\\b" << "\\bassert\\b"
+                    << "\\bbreak\\b" << "\\bclass\\b" << "\\bcontinue\\b"
+                    << "\\bdef\\b" << "\\bdel\\b" << "\\belif\\b"
+                    << "\\belse\\b" << "\\bexcept\\b" << "\\bfinally\\b"
+                    << "\\bfor\\b" << "\\bfrom\\b" << "\\bglobal\\b"
+                    << "\\bif\\b" << "\\bimport\\b" << "\\bin\\b"
+                    << "\\bis\\b" << "\\blambda\\b" << "\\bnonlocal\\b"
+                    << "\\bnot\\b" << "\\bor\\b" << "\\bpass\\b"
+                    << "\\braise\\b" << "\\breturn\\b" << "\\btry\\b"
+                    << "\\bwhile\\b" << "\\bwith\\b" << "\\byield\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegExp(pattern);
         rule.format = keywordFormat;

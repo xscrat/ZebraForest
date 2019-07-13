@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QSysInfo>
+#include <QtCore>
+
+QSysInfo gSysInfo;
 
 int main(int argc, char *argv[])
 {

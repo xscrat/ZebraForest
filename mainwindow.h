@@ -46,7 +46,7 @@ private:
     QString strippedName(const QString &fullFileName);
     void transferGraphicCodeToEditorCode();
 
-    CodeEditor *textEdit;
+    CodeEditor *codeEditor;
     Highlighter *highlighter;
     QString curFile;
     QProcess *pythonProcess;

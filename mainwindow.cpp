@@ -7,6 +7,9 @@
 #include "QtWebSockets/qwebsocket.h"
 #include "QUdpSocket"
 #include <QDebug>
+#include <QSysInfo>
+
+extern QSysInfo gSysInfo;
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
@@ -16,15 +19,24 @@ MainWindow::MainWindow(QWidget *parent) :
     highlighter = NULL;
 
     ui->setupUi(this);
-    textEdit = ui->tabCodeEditor;
-    ui->tabGraphicEditor->load(QUrl("file:///C:/Users/Junfeng/Documents/QTBlockly/Blockly/blockly-master/demos/index.html"));
+    codeEditor = ui->tabCodeEditor;
+    QFileInfo currentFileInfo(__FILE__);
+    QString blocklyFilePath = QDir(currentFileInfo.absolutePath()).filePath("blockly-master/demos/generator/index.html");
+    if (gSysInfo.kernelType().indexOf("win") != -1)
+    {
+        ui->tabGraphicEditor->load(QUrl(QString("file:///") + blocklyFilePath));
+    }
+    else
+    {
+        ui->tabGraphicEditor->load(QUrl(QString("file:///") + blocklyFilePath));
+    }
     connect(ui->buttonNew, SIGNAL(clicked()), this, SLOT(newFile()));
     connect(ui->buttonOpen, SIGNAL(clicked()), this, SLOT(open()));
     connect(ui->buttonSave, SIGNAL(clicked()), this, SLOT(save()));
     connect(ui->buttonSaveAs, SIGNAL(clicked()), this, SLOT(saveAs()));
     connect(ui->buttonRun, SIGNAL(clicked()), this, SLOT(run()));
     connect(ui->tabEditor, SIGNAL(currentChanged(int)), this, SLOT(tabSelected()));
-    highlighter = new Highlighter(textEdit->document());
+    highlighter = new Highlighter(codeEditor->document());
 }
 
 MainWindow::~MainWindow()
@@ -38,13 +50,14 @@ MainWindow::~MainWindow()
     if (highlighter)
     {
         delete highlighter;
+        highlighter = NULL;
     }
 }
 
 void MainWindow::newFile()
 {
     if (maybeSave()) {
-        textEdit->clear();
+        codeEditor->clear();
         setCurrentFile("");
     }
 }
@@ -83,7 +96,7 @@ bool MainWindow::saveAs()
 
 bool MainWindow::maybeSave()
 {
-    if (textEdit->document()->isModified()) {
+    if (codeEditor->document()->isModified()) {
         QMessageBox::StandardButton ret;
         ret = QMessageBox::warning(this, tr("Application"),
                      tr("The document has been modified.\n"
@@ -100,7 +113,7 @@ bool MainWindow::maybeSave()
 void MainWindow::setCurrentFile(const QString &fileName)
 {
     curFile = fileName;
-    textEdit->document()->setModified(false);
+    codeEditor->document()->setModified(false);
     setWindowModified(false);
 
     QString shownName = curFile;
@@ -124,7 +137,7 @@ void MainWindow::loadFile(const QString &fileName)
 #ifndef QT_NO_CURSOR
     QApplication::setOverrideCursor(Qt::WaitCursor);
 #endif
-    textEdit->setPlainText(in.readAll());
+    codeEditor->setPlainText(in.readAll());
 #ifndef QT_NO_CURSOR
     QApplication::restoreOverrideCursor();
 #endif
@@ -147,7 +160,7 @@ bool MainWindow::saveFile(const QString &fileName)
 #ifndef QT_NO_CURSOR
     QApplication::setOverrideCursor(Qt::WaitCursor);
 #endif
-    out << textEdit->toPlainText();
+    out << codeEditor->toPlainText();
 #ifndef QT_NO_CURSOR
     QApplication::restoreOverrideCursor();
 #endif
@@ -165,7 +178,7 @@ bool MainWindow::run()
         pythonProcess = NULL;
     }
     pythonProcess = new QProcess(this);
-    QString program = "python.exe";
+    QString program = "python";
     QString command = "-c";
     pythonProcess->setProcessChannelMode(QProcess::MergedChannels);
     connect(pythonProcess, SIGNAL(readyRead()), this, SLOT(readCommand()));
