@@ -2,10 +2,6 @@
 #include "ui_mainwindow.h"
 #include "highlighter.h"
 #include <QProcess>
-#include <QtWebChannel/QWebChannel>
-#include "QtWebSockets/qwebsocketserver.h"
-#include "QtWebSockets/qwebsocket.h"
-#include "QUdpSocket"
 #include <QDebug>
 #include <QSysInfo>
 
@@ -22,14 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     codeEditor = ui->tabCodeEditor;
     QFileInfo currentFileInfo(__FILE__);
     QString blocklyFilePath = QDir(currentFileInfo.absolutePath()).filePath("blockly-master/demos/generator/index.html");
-    if (gSysInfo.kernelType().indexOf("win") != -1)
-    {
-        ui->tabGraphicEditor->load(QUrl(QString("file:///") + blocklyFilePath));
-    }
-    else
-    {
-        ui->tabGraphicEditor->load(QUrl(QString("file:///") + blocklyFilePath));
-    }
+    ui->tabGraphicEditor->load(QUrl(QString("file:///") + blocklyFilePath));
     connect(ui->buttonNew, SIGNAL(clicked()), this, SLOT(newFile()));
     connect(ui->buttonOpen, SIGNAL(clicked()), this, SLOT(open()));
     connect(ui->buttonSave, SIGNAL(clicked()), this, SLOT(save()));
