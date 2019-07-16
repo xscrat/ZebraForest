@@ -45,7 +45,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "args0": [{
       "type": "field_input",
       "name": "TEXT",
-      "text": "xxx"
+      "text": ""
     }],
     "output": "String",
     "style": "text_blocks",

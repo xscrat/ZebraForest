@@ -6,6 +6,11 @@
 #include <QSysInfo>
 
 extern QSysInfo gSysInfo;
+QString header_code("def execute_sprite_func(func_name, *args):\n"
+                    "  print(func_name)\n"
+                    "  for arg in args:\n"
+                    "    print(arg)\n"
+                    "\n");
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent),
@@ -17,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     codeEditor = ui->tabCodeEditor;
     QFileInfo currentFileInfo(__FILE__);
-    QString blocklyFilePath = QDir(currentFileInfo.absolutePath()).filePath("blockly-master/demos/generator/index.html");
+    QString blocklyFilePath = QDir(currentFileInfo.absolutePath()).filePath("blockly-master/zebra_forest/index.html");
     ui->tabGraphicEditor->load(QUrl(QString("file:///") + blocklyFilePath));
     connect(ui->buttonNew, SIGNAL(clicked()), this, SLOT(newFile()));
     connect(ui->buttonOpen, SIGNAL(clicked()), this, SLOT(open()));
@@ -172,7 +177,7 @@ bool MainWindow::run()
     pythonProcess->setProcessChannelMode(QProcess::MergedChannels);
     connect(pythonProcess, SIGNAL(readyRead()), this, SLOT(readCommand()));
     connect(pythonProcess, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(stopCommand(int, QProcess::ExitStatus)));
-    pythonProcess->start(program, QStringList() << command << ui->tabCodeEditor->toPlainText());
+    pythonProcess->start(program, QStringList() << command << header_code + ui->tabCodeEditor->toPlainText());
     return true;
 }
 
@@ -190,7 +195,7 @@ void MainWindow::transferGraphicCodeToEditorCode()
 {
     QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("showCode();");
     QString code = tmp.toString();
-    ui->tabCodeEditor->document()->setPlainText(code);
+    ui->tabCodeEditor->document()->setPlainText(header_code + code);
 }
 
 void MainWindow::tabSelected()
