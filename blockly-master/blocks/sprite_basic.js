@@ -31,7 +31,6 @@ Blockly.defineBlocksWithJsonArray([
       "name": "index",
       "check": "Number"
     }],
-    "output": "Number",
     "style": "math_blocks",
   },
   {
@@ -69,7 +68,6 @@ Blockly.defineBlocksWithJsonArray([
       "name": "value",
       "check": "Number"
     }],
-    "output": "Number",
     "style": "math_blocks",
   },
   {
@@ -85,7 +83,6 @@ Blockly.defineBlocksWithJsonArray([
       "name": "value",
       "check": "Number"
     }],
-    "output": "Number",
     "style": "math_blocks",
   },
   {
@@ -101,7 +98,6 @@ Blockly.defineBlocksWithJsonArray([
       "name": "value",
       "check": "Colour"
     }],
-    "output": "Number",
     "style": "math_blocks",
   },
 ]);
