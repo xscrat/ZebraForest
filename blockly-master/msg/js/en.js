@@ -434,3 +434,22 @@ Blockly.Msg["TEXTS_HUE"] = "160";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
+
+Blockly.Msg["GET_CLIENTS"] = "get_clients";
+Blockly.Msg["GET_POWER"] = "get_power";
+Blockly.Msg["GET_POWER_2"] = "";
+Blockly.Msg["SET_BLINK"] = "set_blink";
+Blockly.Msg["SET_BLINK_2"] = "";
+Blockly.Msg["GET_DIGITAL"] = "get_digital";
+Blockly.Msg["GET_DIGITAL_2"] = "";
+Blockly.Msg["GET_ANALOG"] = "get_analog";
+Blockly.Msg["GET_ANALOG_2"] = "";
+Blockly.Msg["SET_DIGITAL"] = "set_digital";
+Blockly.Msg["SET_DIGITAL_2"] = "";
+Blockly.Msg["SET_ANALOG"] = "set_analog";
+Blockly.Msg["SET_ANALOG_2"] = "";
+Blockly.Msg["SET_RAINBOW"] = "set_rainbow";
+Blockly.Msg["SET_RAINBOW_2"] = "";
+
+Blockly.Msg["HIGH"] = "high";
+Blockly.Msg["LOW"] = "low";

@@ -434,3 +434,22 @@ Blockly.Msg["TEXTS_HUE"] = "160";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
 Blockly.Msg["COLOUR_HUE"] = "20";
 Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
+
+Blockly.Msg["GET_CLIENTS"] = "获取精灵设备列表";
+Blockly.Msg["GET_POWER"] = "获取";
+Blockly.Msg["GET_POWER_2"] = "号精灵电量";
+Blockly.Msg["SET_BLINK"] = "呼叫";
+Blockly.Msg["SET_BLINK_2"] = "号精灵";
+Blockly.Msg["GET_DIGITAL"] = "获取";
+Blockly.Msg["GET_DIGITAL_2"] = "号精灵的数字值";
+Blockly.Msg["GET_ANALOG"] = "获取";
+Blockly.Msg["GET_ANALOG_2"] = "号精灵的电压值";
+Blockly.Msg["SET_DIGITAL"] = "设置";
+Blockly.Msg["SET_DIGITAL_2"] = "号精灵的数字输出为";
+Blockly.Msg["SET_ANALOG"] = "设置";
+Blockly.Msg["SET_ANALOG_2"] = "号精灵的模拟输出为";
+Blockly.Msg["SET_RAINBOW"] = "设置";
+Blockly.Msg["SET_RAINBOW_2"] = "号精灵上的灯带颜色为";
+
+Blockly.Msg["HIGH"] = "高";
+Blockly.Msg["LOW"] = "低";

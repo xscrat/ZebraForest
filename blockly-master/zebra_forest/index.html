@@ -8,13 +8,15 @@
   <script src="../blocks/loops.js"></script>
   <script src="../blocks/math.js"></script>
   <script src="../blocks/sprite_basic.js"></script>
+  <script src="../blocks/sprite.js"></script>
   <script src="../blocks/text.js"></script>
   <script src="../blocks/lists.js"></script>
   <script src="../blocks/colour.js"></script>
   <script src="../javascript_compressed.js"></script>
   <script src="../python_compressed.js"></script>
   <script src="../generators/python/sprite_basic.js"></script>
-  <script src="../msg/js/en.js"></script>
+  <script src="../generators/python/sprite.js"></script>
+  <script src="../msg/js/zh-hans.js"></script>
   <style>
     body {
       background-color: #fff;
@@ -28,7 +30,9 @@
 </head>
 <body>
   <p>Zebra Forest</p>
-
+  <p>
+    <button onclick="showCode()">Show JavaScript</button>
+  </p>
   <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
 
   <xml id="toolbox" style="display: none">
@@ -57,21 +61,41 @@
       <block type="math_single"></block>
     </category>
     <category name="SpriteBasic" colour="%{BKY_MATH_HUE}">
-      <block type="get_clients">
-      </block>
+      <block type="get_clients"></block>
       <block type="get_power">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
       <block type="set_blink">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
       <block type="get_digital">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
       <block type="get_analog">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
       <block type="set_digital">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
       <block type="set_analog">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
       <block type="set_rainbow">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
       </block>
     </category>
     <category name="Text" colour="%{BKY_TEXTS_HUE}">
@@ -81,6 +105,9 @@
     </category>
     <category name="Colour" colour="%{BKY_TEXTS_HUE}">
       <block type="colour_picker"></block>
+    </category>
+    <category name="List" colour="%{BKY_TEXTS_HUE}">
+      <block type="lists_length"></block>
     </category>
   </xml>
 
