@@ -10,6 +10,9 @@
   <script src="../blocks/sprite.js"></script>
   <script src="../blocks/sprite_basic.js"></script>
   <script src="../blocks/sprite_sensor.js"></script>
+  <script src="../blocks/sprite_impetus.js"></script>
+  <script src="../blocks/sprite_comm.js"></script>
+  <script src="../blocks/sprite_mode.js"></script>
   <script src="../blocks/text.js"></script>
   <script src="../blocks/lists.js"></script>
   <script src="../blocks/colour.js"></script>
@@ -21,6 +24,9 @@
   <script src="../generators/python/sprite.js"></script>
   <script src="../generators/python/sprite_basic.js"></script>
   <script src="../generators/python/sprite_sensor.js"></script>
+  <script src="../generators/python/sprite_impetus.js"></script>
+  <script src="../generators/python/sprite_comm.js"></script>
+  <script src="../generators/python/sprite_mode.js"></script>
   <script src="../msg/js/zh-hans.js"></script>
   <style>
     body {
@@ -418,6 +424,60 @@
         </value>
       </block>
     </category>
+    <category name="%{BKY_CATSPRITEIMPETUS}" colour="%{BKY_MATH_HUE}">
+      <block type="set_servo">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+      <block type="set_motor_step">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+      <block type="set_motor_speed">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATSPRITECOMM}" colour="%{BKY_MATH_HUE}">
+      <block type="send_uart">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+        <value name="value">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="read_uart">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATSPRITEMODE}" colour="%{BKY_MATH_HUE}">
+      <block type="set_normal">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+      <block type="set_int">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+      <block type="set_lowpower">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+      <block type="get_eeprom">
+        <value name="index">
+          <shadow type="sprite_index"></shadow>
+        </value>
+      </block>
+    </category>
   </xml>
 
   <xml id="startBlocks" style="display: none">
@@ -478,6 +538,7 @@
 
     function showCode() {
       var code = Blockly.Python.workspaceToCode(demoWorkspace);
+      console.log(code);
 	    return code;
     }
 

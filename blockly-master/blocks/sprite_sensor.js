@@ -75,5 +75,5 @@ Blockly.defineBlocksWithJsonArray([
     'output': 'Number',
     'style': 'math_blocks',
     'inputsInline': true
-  },
+  }
 ]);

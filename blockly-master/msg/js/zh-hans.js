@@ -467,6 +467,31 @@ Blockly.Msg["GET_PRESSURE_2"] = "号精灵大气压强";
 Blockly.Msg["GET_SPEED"] = "获取";
 Blockly.Msg["GET_SPEED_2"] = "号精灵速度";
 
+Blockly.Msg["SET_SERVO"] = "设置";
+Blockly.Msg["SET_SERVO_2"] = "号精灵上的舵机为";
+Blockly.Msg["SET_MOTOR_STEP"] = "设置";
+Blockly.Msg["SET_MOTOR_STEP_2"] = "号精灵上的步进电机步数为";
+Blockly.Msg["SET_MOTOR_SPEED"] = "设置";
+Blockly.Msg["SET_MOTOR_SPEED_2"] = "号精灵上的步进电机转速为";
+
+Blockly.Msg["SEND_UART"] = "向";
+Blockly.Msg["SEND_UART_2"] = "号精灵发送串口数据";
+Blockly.Msg["READ_UART"] = "向";
+Blockly.Msg["READ_UART_2"] = "号精灵读取串口数据";
+
+Blockly.Msg["SET_NORMAL"] = "切换";
+Blockly.Msg["SET_NORMAL_2"] = "号精灵到正常工作模式";
+Blockly.Msg["SET_INT"] = "切换";
+Blockly.Msg["SET_INT_2"] = "号精灵到中断工作模式";
+Blockly.Msg["RISING"] = "上升";
+Blockly.Msg["FALLING"] = "下降";
+Blockly.Msg["CHANGE"] = "改变";
+Blockly.Msg["SET_LOWPOWER"] = "切换";
+Blockly.Msg["SET_LOWPOWER_2"] = "号精灵到低功耗工作模式，间隔为";
+Blockly.Msg["SET_LOWPOWER_3"] = "，函数为";
+Blockly.Msg["GET_EEPROM"] = "获取";
+Blockly.Msg["GET_EEPROM_2"] = "号精灵的存储数据";
+
 Blockly.Msg["CATLOGIC"] = "逻辑"
 Blockly.Msg["CATLOOPS"] = "循环"
 Blockly.Msg["CATMATH"] = "数学"
@@ -478,3 +503,6 @@ Blockly.Msg["CATFUNCTIONS"] = "函数"
 
 Blockly.Msg["CATSPRITEBASIC"] = "精灵基础块"
 Blockly.Msg["CATSPRITESENSOR"] = "精灵传感器"
+Blockly.Msg["CATSPRITEIMPETUS"] = "精灵动力"
+Blockly.Msg["CATSPRITECOMM"] = "精灵通讯"
+Blockly.Msg["CATSPRITEMODE"] = "精灵工作模式"

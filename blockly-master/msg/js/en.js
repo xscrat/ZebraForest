@@ -467,6 +467,30 @@ Blockly.Msg["GET_PRESSURE_2"] = "";
 Blockly.Msg["GET_SPEED"] = "get_speed";
 Blockly.Msg["GET_SPEED_2"] = "";
 
+Blockly.Msg["SET_SERVO"] = "set_servo";
+Blockly.Msg["SET_SERVO_2"] = "";
+Blockly.Msg["SET_MOTOR_STEP"] = "set_motor_step";
+Blockly.Msg["SET_MOTOR_STEP_2"] = "";
+Blockly.Msg["SET_MOTOR_SPEED"] = "set_motor_speed";
+Blockly.Msg["SET_MOTOR_SPEED_2"] = "";
+Blockly.Msg["SEND_UART"] = "send_uart";
+Blockly.Msg["SEND_UART_2"] = "";
+Blockly.Msg["READ_UART"] = "read_uart";
+Blockly.Msg["READ_UART_2"] = "";
+
+Blockly.Msg["SET_NORMAL"] = "set_normal";
+Blockly.Msg["SET_NORMAL_2"] = "";
+Blockly.Msg["SET_INT"] = "set_int";
+Blockly.Msg["SET_INT_2"] = "";
+Blockly.Msg["RISING"] = "rising";
+Blockly.Msg["FALLING"] = "falling";
+Blockly.Msg["CHANGE"] = "change";
+Blockly.Msg["SET_LOWPOWER"] = "set_lowpower";
+Blockly.Msg["SET_LOWPOWER_2"] = "interval";
+Blockly.Msg["SET_LOWPOWER_3"] = "function";
+Blockly.Msg["GET_EEPROM"] = "get_eeprom";
+Blockly.Msg["GET_EEPROM_2"] = "";
+
 Blockly.Msg["CATLOGIC"] = "Logic"
 Blockly.Msg["CATLOOPS"] = "Loops"
 Blockly.Msg["CATMATH"] = "Math"
@@ -478,3 +502,6 @@ Blockly.Msg["CATFUNCTIONS"] = "Colour"
 
 Blockly.Msg["CATSPRITEBASIC"] = "SpriteBasic"
 Blockly.Msg["CATSPRITESENSOR"] = "SpriteSensor"
+Blockly.Msg["CATSPRITEIMPETUS"] = "SpriteImpetus"
+Blockly.Msg["CATSPRITECOMM"] = "SpriteComm"
+Blockly.Msg["CATSPRITEMODE"] = "SpriteMode"
