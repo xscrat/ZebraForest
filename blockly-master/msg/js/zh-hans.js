@@ -453,3 +453,28 @@ Blockly.Msg["SET_RAINBOW_2"] = "号精灵上的灯带颜色为";
 
 Blockly.Msg["HIGH"] = "高";
 Blockly.Msg["LOW"] = "低";
+
+Blockly.Msg["GET_DHT11T"] = "获取";
+Blockly.Msg["GET_DHT11T_2"] = "号精灵温度";
+Blockly.Msg["GET_DHT11H"] = "获取";
+Blockly.Msg["GET_DHT11H_2"] = "号精灵湿度";
+Blockly.Msg["GET_LX"] = "获取";
+Blockly.Msg["GET_LX_2"] = "号精灵光照";
+Blockly.Msg["GET_TEMPERATURE"] = "获取";
+Blockly.Msg["GET_TEMPERATURE_2"] = "号精灵温度";
+Blockly.Msg["GET_PRESSURE"] = "获取";
+Blockly.Msg["GET_PRESSURE_2"] = "号精灵大气压强";
+Blockly.Msg["GET_SPEED"] = "获取";
+Blockly.Msg["GET_SPEED_2"] = "号精灵速度";
+
+Blockly.Msg["CATLOGIC"] = "逻辑"
+Blockly.Msg["CATLOOPS"] = "循环"
+Blockly.Msg["CATMATH"] = "数学"
+Blockly.Msg["CATTEXT"] = "文本"
+Blockly.Msg["CATLISTS"] = "列表"
+Blockly.Msg["CATCOLOUR"] = "颜色"
+Blockly.Msg["CATVARIABLES"] = "变量"
+Blockly.Msg["CATFUNCTIONS"] = "函数"
+
+Blockly.Msg["CATSPRITEBASIC"] = "精灵基础块"
+Blockly.Msg["CATSPRITESENSOR"] = "精灵传感器"

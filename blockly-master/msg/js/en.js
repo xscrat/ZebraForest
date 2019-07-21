@@ -453,3 +453,28 @@ Blockly.Msg["SET_RAINBOW_2"] = "";
 
 Blockly.Msg["HIGH"] = "high";
 Blockly.Msg["LOW"] = "low";
+
+Blockly.Msg["GET_DHT11T"] = "get_DHT11t";
+Blockly.Msg["GET_DHT11T_2"] = "";
+Blockly.Msg["GET_DHT11H"] = "get_DHT11h";
+Blockly.Msg["GET_DHT11H_2"] = "";
+Blockly.Msg["GET_LX"] = "get_LX";
+Blockly.Msg["GET_LX_2"] = "";
+Blockly.Msg["GET_TEMPERATURE"] = "get_temperature";
+Blockly.Msg["GET_TEMPERATURE_2"] = "";
+Blockly.Msg["GET_PRESSURE"] = "get_pressure";
+Blockly.Msg["GET_PRESSURE_2"] = "";
+Blockly.Msg["GET_SPEED"] = "get_speed";
+Blockly.Msg["GET_SPEED_2"] = "";
+
+Blockly.Msg["CATLOGIC"] = "Logic"
+Blockly.Msg["CATLOOPS"] = "Loops"
+Blockly.Msg["CATMATH"] = "Math"
+Blockly.Msg["CATTEXT"] = "Text"
+Blockly.Msg["CATLISTS"] = "List"
+Blockly.Msg["CATCOLOUR"] = "Colour"
+Blockly.Msg["CATVARIABLES"] = "Colour"
+Blockly.Msg["CATFUNCTIONS"] = "Colour"
+
+Blockly.Msg["CATSPRITEBASIC"] = "SpriteBasic"
+Blockly.Msg["CATSPRITESENSOR"] = "SpriteSensor"

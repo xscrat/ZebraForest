@@ -1,7 +1,5 @@
 'use strict';
 
-goog.provide('Blockly.Constants.ZebraSprite');
-
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
