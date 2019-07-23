@@ -23,3 +23,6 @@ HEADERS  += mainwindow.h \
     highlighter.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resource.qrc

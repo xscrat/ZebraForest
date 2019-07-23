@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/blockly_tab.jpg</file>
+        <file>images/pytthon_tab.jpg</file>
+        <file>images/window_background.jpg</file>
+        <file>images/window_icon.ico</file>
+    </qresource>
+</RCC>

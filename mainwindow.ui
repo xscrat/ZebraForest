@@ -6,12 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1015</width>
-    <height>626</height>
+    <width>1021</width>
+    <height>693</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>斑马森林</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/images/window_icon.ico</normaloff>:/images/window_icon.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">MainWindow
+{
+background-image: url(:/images/window_background.jpg);
+}</string>
   </property>
   <widget class="QTabWidget" name="tabEditor">
    <property name="geometry">
@@ -19,20 +29,31 @@
      <x>20</x>
      <y>40</y>
      <width>751</width>
-     <height>581</height>
+     <height>641</height>
     </rect>
    </property>
    <property name="currentIndex">
     <number>0</number>
    </property>
    <widget class="GraphicEditor" name="tabGraphicEditor">
+    <attribute name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/images/blockly_tab.jpg</normaloff>:/images/blockly_tab.jpg</iconset>
+    </attribute>
     <attribute name="title">
-     <string>Tab 1</string>
+     <string>模块</string>
     </attribute>
    </widget>
    <widget class="CodeEditor" name="tabCodeEditor">
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <attribute name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/images/pytthon_tab.jpg</normaloff>:/images/pytthon_tab.jpg</iconset>
+    </attribute>
     <attribute name="title">
-     <string>Tab 2</string>
+     <string>代码</string>
     </attribute>
    </widget>
   </widget>
@@ -89,7 +110,7 @@
      <x>780</x>
      <y>40</y>
      <width>221</width>
-     <height>581</height>
+     <height>641</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -153,6 +174,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

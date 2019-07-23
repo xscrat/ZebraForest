@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
   <title>Blockly Demo: Zebra Forest</title>
   <script src="../blockly_compressed.js"></script>
   <script src="../blocks/logic.js"></script>
@@ -32,19 +33,14 @@
     body {
       background-color: #fff;
       font-family: sans-serif;
-    }
-    h1 {
-      font-weight: normal;
-      font-size: 140%;
+      width:100vh;
+      height:100vh;
     }
   </style>
 </head>
 <body>
-  <p>Zebra Forest</p>
-  <p>
-    <button onclick="showCode()">Show JavaScript</button>
-  </p>
-  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+  <div id="blocklyDiv" style="height:500px;width:700px"></div>
 
   <xml id="toolbox" style="display: none">
     <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
@@ -542,6 +538,17 @@
 	    return code;
     }
 
+    function saveBlockly() {
+      var xml = Blockly.Xml.workspaceToDom(demoWorkspace);
+      var xml_text = Blockly.Xml.domToText(xml);
+      return xml_text;
+    }
+
+    function loadBlockly(encodedData) {
+      var xml_text = window.atob(encodedData);
+      var xml = Blockly.Xml.textToDom(xml_text);
+      Blockly.Xml.domToWorkspace(xml, demoWorkspace);
+    }
   </script>
 
 </body>

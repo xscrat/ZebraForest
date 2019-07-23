@@ -59,7 +59,9 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
     if (maybeSave()) {
-        QString fileName = QFileDialog::getOpenFileName(this);
+        QString fileName = QFileDialog::getOpenFileName(this, "", "",
+                                                        tr("All files (*.*);;blk (*.blk);;" ));
+
         if (!fileName.isEmpty())
             loadFile(fileName);
     }
@@ -76,16 +78,9 @@ bool MainWindow::save()
 
 bool MainWindow::saveAs()
 {
-    QFileDialog dialog(this);
-    dialog.setWindowModality(Qt::WindowModal);
-    dialog.setAcceptMode(QFileDialog::AcceptSave);
-    QStringList files;
-    if (dialog.exec())
-        files = dialog.selectedFiles();
-    else
-        return false;
-
-    return saveFile(files.at(0));
+    QString fileName = QFileDialog::getSaveFileName(this, "保存模块框图", "",
+                                                    "blk (*.blk);;All Files (*)");
+    return saveFile(fileName);
 }
 
 bool MainWindow::maybeSave()
@@ -131,7 +126,12 @@ void MainWindow::loadFile(const QString &fileName)
 #ifndef QT_NO_CURSOR
     QApplication::setOverrideCursor(Qt::WaitCursor);
 #endif
-    codeEditor->setPlainText(in.readAll());
+    QString loadContent(in.readAll());
+    QByteArray contentByteArray = loadContent.toLatin1();
+    QString contentByteArrayBase64 = contentByteArray.toBase64();
+    QString evaluateSource = "loadBlockly(\'" + contentByteArrayBase64 + "\');";
+    ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript(evaluateSource);
+
 #ifndef QT_NO_CURSOR
     QApplication::restoreOverrideCursor();
 #endif
@@ -141,6 +141,8 @@ void MainWindow::loadFile(const QString &fileName)
 
 bool MainWindow::saveFile(const QString &fileName)
 {
+    QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("saveBlockly();");
+    QString saveContent = tmp.toString();
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
         QMessageBox::warning(this, tr("Application"),
@@ -154,7 +156,7 @@ bool MainWindow::saveFile(const QString &fileName)
 #ifndef QT_NO_CURSOR
     QApplication::setOverrideCursor(Qt::WaitCursor);
 #endif
-    out << codeEditor->toPlainText();
+    out << saveContent;
 #ifndef QT_NO_CURSOR
     QApplication::restoreOverrideCursor();
 #endif
