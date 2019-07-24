@@ -185,12 +185,12 @@ bool MainWindow::run()
 
 void MainWindow::readCommand()
 {
-    ui->codeOutput->append(pythonProcess->readAll());
+    // ui->codeOutput->append(pythonProcess->readAll());
 }
 
 void MainWindow::stopCommand(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    ui->codeOutput->append(pythonProcess->readAll());
+    // ui->codeOutput->append(pythonProcess->readAll());
 }
 
 void MainWindow::transferGraphicCodeToEditorCode()
