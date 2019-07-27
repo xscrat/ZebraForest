@@ -16,11 +16,6 @@ SettingWindow::SettingWindow(QWidget *parent) :
     QString settingFileName = QDir(currentFileInfo.absolutePath()).filePath("setting.cfg");
     QFile file(settingFileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        QMessageBox::warning(this, tr("Application"),
-                             tr("Cannot read file %1:\n%2.")
-                             .arg(settingFileName)
-                             .arg(file.errorString()));
-        return;
     }
 
     QTextStream in(&file);
@@ -30,7 +25,6 @@ SettingWindow::SettingWindow(QWidget *parent) :
     {
         ui->comboBox->addItem(info.portName());
     }
-    ui->comboBox->addItem("abcd");
     connect(ui->buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(onOK()));
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText("确定");
