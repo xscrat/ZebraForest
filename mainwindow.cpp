@@ -162,7 +162,7 @@ void MainWindow::loadFile(const QString &fileName)
     QString loadContent(in.readAll());
     QByteArray contentByteArray = loadContent.toLatin1();
     QString contentByteArrayBase64 = contentByteArray.toBase64();
-    QString evaluateSource = "loadBlockly(\'" + contentByteArrayBase64 + "\');";
+    QString evaluateSource = "Code.loadBlockly(\'" + contentByteArrayBase64 + "\');";
     ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript(evaluateSource);
 
 #ifndef QT_NO_CURSOR
@@ -174,7 +174,7 @@ void MainWindow::loadFile(const QString &fileName)
 
 bool MainWindow::saveFile(const QString &fileName)
 {
-    QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("saveBlockly();");
+    QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("Code.saveBlockly();");
     QString saveContent = tmp.toString();
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -229,17 +229,17 @@ bool MainWindow::setting()
 
 void MainWindow::readCommand()
 {
-    // ui->codeOutput->append(pythonProcess->readAll());
+    pythonProcess->readAll();
 }
 
 void MainWindow::stopCommand(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    // ui->codeOutput->append(pythonProcess->readAll());
+    pythonProcess->readAll();
 }
 
 void MainWindow::transferGraphicCodeToEditorCode()
 {
-    QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("showCode();");
+    QVariant tmp =  ui->tabGraphicEditor->page()->currentFrame()->evaluateJavaScript("Code.showCode();");
     QString code = tmp.toString();
     ui->tabCodeEditor->document()->setPlainText(header_code + code);
 }
