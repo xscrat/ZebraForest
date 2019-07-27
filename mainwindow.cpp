@@ -112,7 +112,11 @@ bool MainWindow::save()
 bool MainWindow::saveAs()
 {
     QString fileName = QFileDialog::getSaveFileName(this, "保存模块框图", "",
-                                                    "blk (*.blk);;All Files (*)");
+                                                    "blk (*.blk);;");
+    if (!fileName.endsWith(".blk"))
+    {
+        fileName += ".blk";
+    }
     return saveFile(fileName);
 }
 
