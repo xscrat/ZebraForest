@@ -547,13 +547,13 @@ Code.discard = function() {
 };
 
 Code.showCode = function() {
-  var code = Blockly.Python.workspaceToCode(demoWorkspace);
+  var code = Blockly.Python.workspaceToCode(Code.workspace);
   console.log(code);
   return code;
 }
 
 Code.saveBlockly = function() {
-  var xml = Blockly.Xml.workspaceToDom(demoWorkspace);
+  var xml = Blockly.Xml.workspaceToDom(Code.workspace);
   var xml_text = Blockly.Xml.domToText(xml);
   return xml_text;
 }
@@ -561,7 +561,7 @@ Code.saveBlockly = function() {
 Code.loadBlockly = function(encodedData) {
   var xml_text = window.atob(encodedData);
   var xml = Blockly.Xml.textToDom(xml_text);
-  Blockly.Xml.domToWorkspace(xml, demoWorkspace);
+  Blockly.Xml.domToWorkspace(xml, Code.workspace);
 }
 
 // Load the Code demo's language strings.
