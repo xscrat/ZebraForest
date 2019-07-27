@@ -87,6 +87,12 @@ background-image: url(:/images/window_background.jpg);
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QPushButton" name="buttonNew">
+      <property name="maximumSize">
+       <size>
+        <width>114</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 170, 255);
 border-style: outset;
@@ -104,6 +110,12 @@ padding: 6px;</string>
     </item>
     <item>
      <widget class="QPushButton" name="buttonOpen">
+      <property name="maximumSize">
+       <size>
+        <width>114</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 170, 255);
 border-style: outset;
@@ -121,6 +133,12 @@ padding: 6px;</string>
     </item>
     <item>
      <widget class="QPushButton" name="buttonSave">
+      <property name="maximumSize">
+       <size>
+        <width>114</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 170, 255);
 border-style: outset;
@@ -138,6 +156,12 @@ padding: 6px;</string>
     </item>
     <item>
      <widget class="QPushButton" name="buttonSaveAs">
+      <property name="maximumSize">
+       <size>
+        <width>114</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(85, 170, 255);
 border-style: outset;
@@ -155,6 +179,12 @@ padding: 6px;</string>
     </item>
     <item>
      <widget class="QPushButton" name="buttonRun">
+      <property name="maximumSize">
+       <size>
+        <width>114</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(222, 0, 0);
 border-style: outset;
@@ -172,6 +202,12 @@ padding: 6px;</string>
     </item>
     <item>
      <widget class="QPushButton" name="buttonSetting">
+      <property name="maximumSize">
+       <size>
+        <width>114</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(122, 123, 127);
 border-style: outset;
