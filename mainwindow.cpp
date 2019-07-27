@@ -1,15 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "highlighter.h"
+#include "settingwindow.h"
+#include "connectconditionitem.h"
+#include "spritedetailpanel.h"
 #include <QProcess>
 #include <QDebug>
 #include <QSysInfo>
 
 extern QSysInfo gSysInfo;
-QString header_code("def execute_sprite_func(func_name, *args):\n"
-                    "  print(func_name)\n"
-                    "  for arg in args:\n"
-                    "    print(arg)\n"
+QString header_code("import time\n"
+                    "import sys\n"
                     "\n");
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -18,8 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     pythonProcess = NULL;
     highlighter = NULL;
+    settingWindow = NULL;
 
     ui->setupUi(this);
+    setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint);
     codeEditor = ui->tabCodeEditor;
     QFileInfo currentFileInfo(__FILE__);
     QString blocklyFilePath = QDir(currentFileInfo.absolutePath()).filePath("blockly-master/zebra_forest/index.html");
@@ -29,8 +32,25 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonSave, SIGNAL(clicked()), this, SLOT(save()));
     connect(ui->buttonSaveAs, SIGNAL(clicked()), this, SLOT(saveAs()));
     connect(ui->buttonRun, SIGNAL(clicked()), this, SLOT(run()));
+    connect(ui->buttonSetting, SIGNAL(clicked()), this, SLOT(setting()));
     connect(ui->tabEditor, SIGNAL(currentChanged(int)), this, SLOT(tabSelected()));
     highlighter = new Highlighter(codeEditor->document());
+
+    ConnectConditionItem *conditionItem = new ConnectConditionItem(this);
+    QRect conditionItemSize = conditionItem->geometry();
+    conditionItemSize.moveTo(810, 75);
+    conditionItem->setGeometry(conditionItemSize);
+    conditionItem->setCondition(true);
+    conditionItem->raise();
+    spriteConnectionConditions.append(conditionItem);
+
+    SpriteDetailPanel *detailPanel = new SpriteDetailPanel(this);
+    QRect detailPanelSize = detailPanel->geometry();
+    detailPanelSize.moveTo(794, 155);
+    detailPanel->setGeometry(detailPanelSize);
+    detailPanel->raise();
+    detailPanel->setSpriteInfo(1, "60%", "xxx");
+    spriteDetailPanels.append(detailPanel);
 }
 
 MainWindow::~MainWindow()
@@ -45,6 +65,19 @@ MainWindow::~MainWindow()
     {
         delete highlighter;
         highlighter = NULL;
+    }
+    if (settingWindow)
+    {
+        delete settingWindow;
+        settingWindow = NULL;
+    }
+    foreach (ConnectConditionItem* spriteConnectionCondition, spriteConnectionConditions)
+    {
+        delete spriteConnectionCondition;
+    }
+    foreach (SpriteDetailPanel* spriteDetailPanel, spriteDetailPanels)
+    {
+        delete spriteDetailPanel;
     }
 }
 
@@ -180,6 +213,17 @@ bool MainWindow::run()
     connect(pythonProcess, SIGNAL(readyRead()), this, SLOT(readCommand()));
     connect(pythonProcess, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(stopCommand(int, QProcess::ExitStatus)));
     pythonProcess->start(program, QStringList() << command << header_code + ui->tabCodeEditor->toPlainText());
+    return true;
+}
+
+bool MainWindow::setting()
+{
+    if (!settingWindow)
+    {
+        settingWindow = new SettingWindow();
+    }
+    settingWindow->exec();
+    settingWindow->setModal(true);
     return true;
 }
 

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkitwidgets
+QT       += core gui webkitwidgets serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,14 +15,23 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     codeeditor.cpp \
     graphiceditor.cpp \
-    highlighter.cpp
+    highlighter.cpp \
+    settingwindow.cpp \
+    connectconditionitem.cpp \
+    spritedetailpanel.cpp
 
 HEADERS  += mainwindow.h \
     codeeditor.h \
     graphiceditor.h \
-    highlighter.h
+    highlighter.h \
+    settingwindow.h \
+    connectconditionitem.h \
+    spritedetailpanel.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    settingwindow.ui \
+    connectconditionitem.ui \
+    spritedetailpanel.ui
 
 RESOURCES += \
     resource.qrc

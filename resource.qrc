@@ -5,5 +5,7 @@
         <file>images/window_icon.ico</file>
         <file>images/green_circle.png</file>
         <file>images/python_tab.jpg</file>
+        <file>images/window_background_right.jpg</file>
+        <file>images/setting_icon.jpg</file>
     </qresource>
 </RCC>

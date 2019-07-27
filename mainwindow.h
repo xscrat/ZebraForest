@@ -3,12 +3,15 @@
 
 #include <QDialog>
 #include <QProcess>
-#include <QtWebSockets/QWebSocket>
+#include <QList>
 
 QT_BEGIN_NAMESPACE
 class QAction;
 class CodeEditor;
 class Highlighter;
+class SettingWindow;
+class ConnectConditionItem;
+class SpriteDetailPanel;
 QT_END_NAMESPACE
 
 namespace Ui {
@@ -32,6 +35,7 @@ private slots:
     bool save();
     bool saveAs();
     bool run();
+    bool setting();
     void readCommand();
     void stopCommand(int exitCode, QProcess::ExitStatus exitStatus);
     void tabSelected();
@@ -48,8 +52,11 @@ private:
 
     CodeEditor *codeEditor;
     Highlighter *highlighter;
+    SettingWindow *settingWindow;
     QString curFile;
     QProcess *pythonProcess;
+    QList<ConnectConditionItem*> spriteConnectionConditions;
+    QList<SpriteDetailPanel*> spriteDetailPanels;
 };
 
 #endif // MAINWINDOW_H
